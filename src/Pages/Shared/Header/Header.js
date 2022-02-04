@@ -1,35 +1,44 @@
-import React, { useState } from 'react';
-
+import { useEffect, useState } from "react";
+import './Header.css'
 import { Transition } from "@headlessui/react";
+import useScrollListener from "../../../hooks/useScrollListener";
 import logo from '../../../images/logos/logo.png'
 
-const Header = () => {
-    const [isOpen, setIsOpen] = useState(false);
+export default function App() {
+    const [isOpen, setIsOpen] = useState(false)
+    const [navClassList, setNavClassList] = useState([]);
+    const scroll = useScrollListener();
+
+    // update classList of nav on scroll
+    useEffect(() => {
+        const _classList = [];
+
+        if (scroll.y > 150 && scroll.y - scroll.lastY > 0)
+            _classList.push("nav-bar--hidden");
+
+        setNavClassList(_classList);
+    }, [scroll.y, scroll.lastY]);
+
     return (
-        <div>
-            <div>
-                <nav className="bg-yellow-400 px-4 fixed top-0 z-10 w-full ">
+        <>
+            <nav className={navClassList.join(" ")}>
+                <div className="bg-yellow-400">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="flex items-center justify-between h-16">
                             <div className="flex items-center">
                                 <div className="flex-shrink-0">
                                     <img
-                                        class="h-12"
+                                        className="h-12"
                                         src={logo}
-                                        alt="Workflow"
+                                        alt="creative"
                                     />
                                 </div>
                                 <div className="hidden md:block">
                                     <div className="ml-10 flex items-baseline space-x-4">
-                                        {/* <a
-                                            href="#"
-                                            className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium"
-                                        >
-                                            Dashboard
-                                        </a> */}
 
                                         <a
                                             href="#"
+
                                             className="text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                                         >
                                             Team
@@ -37,29 +46,23 @@ const Header = () => {
 
                                         <a
                                             href="#"
-                                            className="text-black  hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                                            className="text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                                         >
                                             Projects
                                         </a>
 
                                         <a
                                             href="#"
-                                            className="text-black  hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                                            className="text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                                         >
                                             Calendar
                                         </a>
 
                                         <a
                                             href="#"
-                                            className="text-black  hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                                            className="text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                                         >
                                             Reports
-                                        </a>
-                                        <a
-                                            href="#"
-                                            className=" hover:bg-gray-700 hover:text-white text-black px-3 py-2 rounded-md text-sm font-medium"
-                                        >
-                                            Login
                                         </a>
                                     </div>
                                 </div>
@@ -161,12 +164,9 @@ const Header = () => {
                             </div>
                         )}
                     </Transition>
-                </nav>
+                </div>
+            </nav>
 
-
-            </div>
-        </div>
+        </>
     );
-};
-
-export default Header;
+}

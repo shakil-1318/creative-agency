@@ -29,7 +29,7 @@ const services = [
 const Services = () => {
     return (
         <div class="container mx-auto my-5">
-            <h1 class='text-4xl text-center font-bold mb-16'>provide awesome <span class='text-teal-600'>services</span></h1>
+            <h1 class='text-4xl text-center font-bold mb-16'>provide awesome <span class='text-green-600'>services</span></h1>
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6 px-4 md:px-12 content-between">
                 {
                     services.map(service => <Service
