@@ -1,12 +1,5 @@
 import React from 'react';
-import Service from '../Service/Service';
 
-
-// https://i.ibb.co/4m1BfNZ/service5.png
-// https://i.ibb.co/YQ2d8q2/service4.png
-// https://i.ibb.co/fqDmyGj/service3.png
-// https://i.ibb.co/d4T860R/service1.png
-// https://i.ibb.co/NZr2m2F/service2.png
 
 const services = [
     {
@@ -36,20 +29,31 @@ const services = [
     }
 ]
 
-const Services = () => {
+const CourseAvailable = ({ date }) => {
+
     return (
-        <div class="container mx-auto my-5" id='services'>
-            <h1 class='text-4xl text-center font-bold mb-16'>provide awesome <span class='text-green-600'>services</span></h1>
+
+        <div class="container mx-auto my-12" id='services'>
+            <h1 class='text-4xl text-center font-semibold mb-16'>Available Our <span class='text-green-600'>Courses {date.toDateString()}</span></h1>
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6 px-4 md:px-12 content-between">
                 {
-                    services.slice(0, 3).map(service => <Service
-                        service={service}
-                        key={service.name}
-                    ></Service>)
+                    services.map(service => <div key={service.name}>
+                        <div class='text-center'>
+                            <div className="card shadow-xl p-10 rounded-md bg-blue-300">
+                                <img class='mx-auto w-1/4' src={service.img} alt="" />
+                                <div className="card-body mt-5">
+                                    <h1 class='text-black font-bold mb-2'>{service.name}</h1>
+                                    <p >{service.description}</p>
+                                </div>
+                                <button class='bg-green-700 hover:bg-purple-600 mt-6 hover:ring-2 rounded-lg text-white px-6 py-2'>Buy Now</button>
+                            </div>
+                        </div>
+                    </div>)
                 }
             </div>
         </div>
+
     );
 };
 
-export default Services;
+export default CourseAvailable;

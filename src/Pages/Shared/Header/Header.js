@@ -3,8 +3,12 @@ import './Header.css'
 import { Transition } from "@headlessui/react";
 import useScrollListener from "../../../hooks/useScrollListener";
 import logo from '../../../images/logos/logo.png'
+import { Link, NavLink } from "react-router-dom";
+import useAuth from "../../../hooks/useAuth";
 
 export default function App() {
+    const { user, logOut } = useAuth();
+
     const [isOpen, setIsOpen] = useState(false)
     const [navClassList, setNavClassList] = useState([]);
     const scroll = useScrollListener();
@@ -28,7 +32,7 @@ export default function App() {
                             <div className="flex items-center">
                                 <div className="flex-shrink-0">
                                     <img
-                                        className="h-12"
+                                        className="h-12 hover:cursor-pointer"
                                         src={logo}
                                         alt="creative"
                                     />
@@ -36,34 +40,53 @@ export default function App() {
                                 <div className="hidden md:block">
                                     <div className="ml-10 flex items-baseline space-x-4">
 
-                                        <a
-                                            href="#"
+                                        <Link to='/home'>
+                                            <a
+                                                href="#"
 
-                                            className="text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                                        >
-                                            Team
-                                        </a>
+                                                className="text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                                            >
+                                                Home
+                                            </a>
+                                        </Link>
 
-                                        <a
-                                            href="#"
-                                            className="text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                                        >
-                                            Projects
-                                        </a>
 
                                         <a
-                                            href="#"
+                                            href="#services"
                                             className="text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                                         >
-                                            Calendar
+                                            services
                                         </a>
+                                        <Link to='/course'>
+                                            <a
+                                                href="#services"
+                                                className="text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                                            >
+                                                Courses
+                                            </a></Link>
 
-                                        <a
-                                            href="#"
-                                            className="text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                                        >
-                                            Reports
-                                        </a>
+
+
+                                        {
+                                            user?.email ?
+                                                <a
+                                                    onClick={logOut}
+                                                    href="#"
+                                                    className="text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                                                >
+                                                    Logout
+                                                </a>
+                                                :
+                                                <Link to='/login'>
+                                                    <a
+                                                        href="#"
+                                                        className="text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                                                    >
+                                                        Login
+                                                    </a>
+                                                </Link>
+                                        }
+
                                     </div>
                                 </div>
                             </div>
@@ -125,7 +148,7 @@ export default function App() {
                     >
                         {(ref) => (
                             <div className="md:hidden" id="mobile-menu">
-                                <div ref={ref} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                                <div ref={ref || ''} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                                     <a
                                         href="#"
                                         className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium"

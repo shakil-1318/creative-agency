@@ -12,7 +12,7 @@ const Banner = () => {
                             Brand To The
                             Next Level</h1>
                         <p class='text-xl py-4'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. At, doloribus nisi labore atque quia alias?</p>
-                        <button class='px-6 py-2 focus:ring rounded bg-black text-slate-50'>Hire Us</button>
+                        <button class='px-6 py-2 hover:ring hover:bg-slate-600 rounded bg-black text-slate-50'>Hire Us</button>
                     </div>
                     <div class='w-full mx-auto'>
                         <img src={banner} alt="" />
