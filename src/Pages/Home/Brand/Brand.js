@@ -27,6 +27,7 @@ const Brand = () => {
                     </div>
                 </div>
             </section>
+
         </div>
     );
 };

@@ -4,7 +4,7 @@ import './Banner.css'
 
 const Banner = () => {
     return (
-        <div class='bg-yellow-400 banner-polyfon pt-8 md:pt-8'>
+        <div class='bg-yellow-300 banner-polyfon pt-8 md:pt-8'>
             <div class='container mx-auto px-4 md:px-6 '>
                 <div class=' md:flex items-center gap-8  py-8 md:py-10'>
                     <div class='mb-8 md:mb-0'>

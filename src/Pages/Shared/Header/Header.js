@@ -4,10 +4,9 @@ import { Transition } from "@headlessui/react";
 import useScrollListener from "../../../hooks/useScrollListener";
 import logo from '../../../images/logos/logo.png'
 import { Link, NavLink } from "react-router-dom";
-import useAuth from "../../../hooks/useAuth";
+
 
 export default function App() {
-    const { user, logOut } = useAuth();
 
     const [isOpen, setIsOpen] = useState(false)
     const [navClassList, setNavClassList] = useState([]);
@@ -26,7 +25,7 @@ export default function App() {
     return (
         <>
             <nav className={navClassList.join(" ")}>
-                <div className="bg-yellow-400">
+                <div className="bg-yellow-300">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="flex items-center justify-between h-16">
                             <div className="flex items-center">
@@ -67,25 +66,19 @@ export default function App() {
 
 
 
-                                        {
-                                            user?.email ?
-                                                <a
-                                                    onClick={logOut}
-                                                    href="#"
-                                                    className="text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                                                >
-                                                    Logout
-                                                </a>
-                                                :
-                                                <Link to='/login'>
-                                                    <a
-                                                        href="#"
-                                                        className="text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                                                    >
-                                                        Login
-                                                    </a>
-                                                </Link>
-                                        }
+
+
+
+                                        <Link to='/login'>
+                                            <a
+                                                href="#"
+                                                className="text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                                            >
+                                                Login
+                                            </a>
+
+                                        </Link>
+
 
                                     </div>
                                 </div>
