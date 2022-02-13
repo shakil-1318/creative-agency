@@ -1,4 +1,6 @@
 import React from 'react';
+import { Oval } from 'react-loader-spinner';
+import useAuth from '../../../hooks/useAuth';
 import Contact from '../../Home/Contact/Contact';
 import Booking from '../Booking/Booking';
 
@@ -38,6 +40,8 @@ const bookings = [
 
 const CourseAvailable = ({ date }) => {
 
+    const { isLoading } = useAuth();
+
     return (
         <>
             <div class="container mx-auto my-12" id='services'>
@@ -51,6 +55,8 @@ const CourseAvailable = ({ date }) => {
                         ></Booking>)
                     }
                 </div>
+
+
             </div>
             <Contact></Contact>
         </>

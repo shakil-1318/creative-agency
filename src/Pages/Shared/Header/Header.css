@@ -8,13 +8,13 @@ body {
     top: 0;
     z-index: 100;
     line-height: 4em;
-    color: white;
+    color: black;
     font-family: sans-serif;
     transition: transform 150ms ease-in-out;
   }
   
   nav.nav-bar--hidden {
-    transform: translateY(-100%);
+    transform: translateY(-200%);
   }
   
   main {
